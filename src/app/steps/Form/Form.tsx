@@ -10,8 +10,8 @@ import { formSchema } from "@/app/helpers/formSchema";
 export const Form = () => {
     const { setCustomerData } = useContext(AppContext)
 
-    const onSubmit = () => {
-        console.log('dupa')
+    const onSubmit = (values, actions) => {
+        console.log(values)
     }
 
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
@@ -31,7 +31,7 @@ export const Form = () => {
   return (
     <div className="w-full">
       <form
-        className="relative p-10 w-full flex flex-col gap-10 after:absolute after:-z-10 after:bg-secondary after:opacity-20 after:w-full after:h-full after:rounded-lg after:inset-0"
+        className="relative p-4 md:p-10 w-full flex flex-col gap-10 after:absolute after:-z-10 after:bg-secondary after:opacity-20 after:w-full after:h-full after:rounded-lg after:inset-0"
         onSubmit={handleSubmit}
       >
         {initialFormFields.map((input, index) => (

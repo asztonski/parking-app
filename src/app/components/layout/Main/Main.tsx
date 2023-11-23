@@ -24,5 +24,5 @@ export const Main = () => {
     }
   };
 
-  return <main className="w-full max-w-3xl my-10 m-auto">{getContent()}</main>;
+  return <main className="w-full max-w-3xl my-10 px-5 m-auto">{getContent()}</main>;
 };

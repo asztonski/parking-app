@@ -15,10 +15,6 @@
 } */
 
 @layer components {
-  html,
-  body {
-    @apply h-full;
-  }
 
   body {
     background: var(--background);
@@ -42,10 +38,6 @@
       endColorstr="#{ie-hex-str(var(--primary))}",
       GradientType=1
     );
-    @apply text-primary flex flex-col;
-  }
-
-  main {
-    @apply flex-1;
+    @apply text-primary;
   }
 }
