@@ -1,7 +1,7 @@
+import { Main } from "./components/layout/Main/Main"
+
 export default function Home() {
   return (
-    <main>
-      
-    </main>
+    <Main />
   )
 }

@@ -15,7 +15,37 @@
 } */
 
 @layer components {
+  html,
   body {
-    @apply text-primary bg-background;
+    @apply h-full;
+  }
+
+  body {
+    background: var(--background);
+    background: -moz-linear-gradient(
+      90deg,
+      var(--background) 0%,
+      var(--primary) 100%
+    );
+    background: -webkit-linear-gradient(
+      90deg,
+      var(--background) 0%,
+      var(--primary) 100%
+    );
+    background: linear-gradient(
+      90deg,
+      var(--background) 0%,
+      var(--primary) 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient(
+      startColorstr="#{ie-hex-str(var(--background))}",
+      endColorstr="#{ie-hex-str(var(--primary))}",
+      GradientType=1
+    );
+    @apply text-primary flex flex-col;
+  }
+
+  main {
+    @apply flex-1;
   }
 }
