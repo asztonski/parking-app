@@ -10,7 +10,6 @@ type InputProps = {
 export const Input:React.FC<InputProps> = ({ label, name, type, value, placeholder, onChange }) => {
     return (
       <div className="w-full flex flex-col gap-6 uppercase text-2xl">
-        {/* <label htmlFor={name}>{label}:</label> */}
         <input
           type={type}
           id={name}

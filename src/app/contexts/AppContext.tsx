@@ -2,8 +2,10 @@
 import React, { createContext, useState, ReactNode } from "react";
 
 type PageContextType = {
-  step: string;
-  setStep: React.Dispatch<React.SetStateAction<string>>;
+  step: string,
+  setStep: React.Dispatch<React.SetStateAction<string>>,
+  customerData: object[],
+  setCustomerData: React.Dispatch<React.SetStateAction<object[]>>,
 };
 
 export const AppContext = createContext<PageContextType | undefined>(undefined);
@@ -12,16 +14,17 @@ const AppContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [step, setStep] = useState<string>("form");
-//   const [playersDetails, setPlayersDetails] = useState<object[]>([
-//     { name: null, unit: null, score: 0 },
-//     { name: null, unit: null, score: 0 }
-//   ]);
+  const [customerData, setCustomerData] = useState<object[]>([
+    { firstName: '', lastName: '', phoneNumber: null, model: '', plates: '' },
+  ]);
 
   return (
     <AppContext.Provider
       value={{
         step,
-        setStep
+        setStep,
+        customerData,
+        setCustomerData
       }}
     >
       {children}
