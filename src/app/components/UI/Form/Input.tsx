@@ -1,25 +1,30 @@
 type InputProps = {
-    label: string,
     name: string,
     type: string,
     value: string,
     placeholder: string,
-    onChange: () => void;
+    id: string,
+    error: boolean,
+    touched: boolean,
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onBlur: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Input:React.FC<InputProps> = ({ label, name, type, value, placeholder, onChange }) => {
+export const Input:React.FC<InputProps> = ({ name, type, value, placeholder, id, error, touched, onChange, onBlur }) => {
     return (
-      <div className="w-full flex flex-col gap-6 uppercase text-2xl">
+      <div className="w-full flex flex-col gap-6 uppercase">
         <input
           type={type}
-          id={name}
+          id={id}
           name={name}
           value={value}
           onChange={onChange}
-          className="p-4 bg-transparent border-primary border-b-2 italic"
+          onBlur={onBlur}
+          className={`p-4 bg-transparent ${error && touched ? 'border-red-500' : 'border-primary'} border-b-2 italic text-2xl`}
           placeholder={placeholder}
           required
         />
+        <span className={`text-red-500 ${error && touched ? 'opacity-100' : 'opacity-0'} duration-[0.34s] ease-[ease]`}>Please provide correct {id}</span>
       </div>
     );
   };
