@@ -1,3 +1,4 @@
+'use client'
 import { useContext, useState, useEffect } from "react";
 import { Input } from "@/app/components/UI/Form/Input";
 import { initialFormFields } from "@/app/api/formData";
@@ -13,18 +14,20 @@ export const Form = () => {
     if (hasError) {
       return;
     }
-    setCustomerData((prevCustomerData) => [
-      ...prevCustomerData,
-      {
-        firstName: values.firstName,
-        lastName: values.lastName,
-        phone: values.phone,
-        email: values.email,
-        model: values.model,
-        plates: values.plates,
-      },
-      setStep("date"),
-    ]);
+
+    // Create a new customer object
+    const newCustomer = {
+      firstName: values.firstName,
+      lastName: values.lastName,
+      phone: values.phone,
+      email: values.email,
+      model: values.model,
+      plates: values.plates,
+    };
+
+    setCustomerData(newCustomer);
+
+    setStep("date");
   };
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
