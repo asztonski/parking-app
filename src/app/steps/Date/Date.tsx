@@ -1,7 +1,8 @@
 "use client";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AppContext } from "@/app/contexts/AppContext";
 
 type ValuePiece = Date | null;
 
@@ -10,6 +11,7 @@ type Value = ValuePiece | [ValuePiece, ValuePiece];
 export const DatePicker = () => {
   const [value, setValue] = useState<Value>(new Date());
   const [numberOfDays, setNumberOfDays] = useState<number>(0);
+  const { customerData, setCustomerData } = useContext(AppContext);
 
   const maxSelectableDate = new Date();
   maxSelectableDate.setDate(maxSelectableDate.getDate() + 30);
@@ -27,8 +29,6 @@ export const DatePicker = () => {
       const [startDate, endDate] = value;
       const days = calculateNumberOfDays(startDate, endDate);
       setNumberOfDays(days);
-      console.log('Number of days selected:', days);
-      // Perform actions with the number of days as needed
     }
   }, [value]);
 
@@ -43,8 +43,24 @@ export const DatePicker = () => {
         selectRange
         maxDate={maxSelectableDate}
       />
-      <div>
-        Number of days: {numberOfDays}
+      <div className="uppercase flex flex-col w-full gap-8 text-2xl">
+        <div className="flex gap-2 w-full">
+          <span className="w-1/2 text-center bg-primary text-secondary p-4">
+            Number of days:
+          </span>
+          <span className="w-1/2 text-center bg-primary text-secondary p-4">
+            {numberOfDays}
+          </span>
+        </div>
+
+        <div className="flex gap-2 w-full">
+          <span className="w-1/2 text-center bg-primary text-secondary p-4">
+            You will pay:
+          </span>
+          <span className="w-1/2 text-center bg-primary text-secondary p-4">
+            {numberOfDays * 40}$
+          </span>
+        </div>
       </div>
     </div>
   );
