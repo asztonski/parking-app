@@ -2,7 +2,7 @@
 import { useContext } from "react";
 import { AppContext } from "@/app/contexts/AppContext";
 import { Form } from "@/app/steps/Form/Form";
-import { Date } from "@/app/steps/Date/Date";
+import { DatePicker } from "@/app/steps/Date/Date";
 import { Container } from "../Container/Container";
 
 export const Main = () => {
@@ -16,7 +16,7 @@ export const Main = () => {
       case "form":
         return <Form />;
       case "date":
-        return <Date />;
+        return <DatePicker />;
       //   case "select unit":
       //     return <SelectUnit />;
       //   case "result":
