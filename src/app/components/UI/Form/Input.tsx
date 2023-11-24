@@ -14,6 +14,7 @@ export const Input:React.FC<InputProps> = ({ name, type, value, placeholder, id,
     return (
       <div className="w-full flex flex-col gap-2 uppercase my-8">
         <input
+          data-testid="input"
           type={type}
           id={id}
           name={name}

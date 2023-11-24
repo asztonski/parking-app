@@ -4,9 +4,9 @@ import { AppContext } from "@/app/contexts/AppContext";
 import { Button } from "@/app/components/UI/Button/Button";
 
 export const CheckoutCard = () => {
-  const { customerData } = useContext(AppContext);
-
-  console.log(customerData.selectedDays.firstDay);
+  const appContext = useContext(AppContext);
+  if (!appContext) return null;
+  const { customerData } = appContext;
 
   const firstDay = customerData.selectedDays.firstDay.toLocaleDateString(
     "en-US",
@@ -27,7 +27,7 @@ export const CheckoutCard = () => {
   );
 
   return (
-    <div className="w-full flex flex-col gap-6 text-xl uppercase items-center">
+    <div data-testid="checkoutCard" className="w-full flex flex-col gap-6 text-xl uppercase items-center">
       <h2 className="text-4xl m-auto my-4 text-secondary font-black">
         Summary
       </h2>
