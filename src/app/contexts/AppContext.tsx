@@ -13,7 +13,7 @@ export const AppContext = createContext<PageContextType | undefined>(undefined);
 const AppContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [step, setStep] = useState<string>("form");
+  const [step, setStep] = useState<string>("date");
   const [customerData, setCustomerData] = useState<object[]>([]);
 
   return (

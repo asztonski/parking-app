@@ -8,13 +8,11 @@
   --secondary: rgb(58, 31, 101);
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-
-  }
-} */
-
 @layer components {
+  html,
+  body {
+    @apply h-full;
+  }
 
   body {
     background: var(--background);
@@ -38,6 +36,37 @@
       endColorstr="#{ie-hex-str(var(--primary))}",
       GradientType=1
     );
-    @apply text-primary;
+    @apply text-primary flex flex-col;
+  }
+
+  main {
+    @apply flex-1;
+  }
+
+  .react-calendar {
+    @apply !bg-transparent !w-full !border-none;
+    & > div:first-of-type {
+      & button {
+        &:hover {
+          @apply !bg-primary !text-secondary
+        }
+      }
+    }
+    & > div:last-of-type {
+      @apply my-8;
+      & button {
+        background-color: rgba(0, 0, 0, 0.5);
+        @apply p-2 focus:!bg-primary focus:!text-secondary;
+        &:hover {
+          @apply bg-primary text-secondary;
+        }
+      }
+      & .react-calendar__month-view__weekdays__weekday {
+        @apply gap-4 uppercase;
+      }
+      & .react-calendar__month-view__days {
+        @apply mt-4;
+      }
+    }
   }
 }

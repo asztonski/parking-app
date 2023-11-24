@@ -7,9 +7,12 @@ import { Button } from "@/app/components/UI/Button/Button";
 import { formSchema } from "@/app/helpers/formSchema";
 
 export const Form = () => {
-  const { customerData, setCustomerData } = useContext(AppContext);
+  const { setStep, setCustomerData } = useContext(AppContext);
 
   const onSubmit = (values, actions) => {
+    if (hasError) {
+      return;
+    }
     setCustomerData((prevCustomerData) => [
       ...prevCustomerData,
       {
@@ -20,6 +23,7 @@ export const Form = () => {
         model: values.model,
         plates: values.plates,
       },
+      setStep("date"),
     ]);
   };
 
@@ -43,35 +47,29 @@ export const Form = () => {
     setHasError(Object.keys(errors).length > 0);
   }, [errors]);
 
-  useEffect(() => {
-    console.log(customerData)
-  }, [customerData])
-
   return (
-    <div className="w-full">
-      <form
-        className="relative p-4 md:p-10 w-full flex flex-col gap-10 after:absolute after:-z-10 after:bg-secondary after:opacity-20 after:w-full after:h-full after:rounded-lg after:inset-0"
-      >
-        {initialFormFields.map((input, index) => (
-          <Input
-            value={values[input.name]}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            placeholder={input.label}
-            key={index}
-            id={input.name}
-            name={input.name}
-            error={errors[input.name]}
-            touched={touched[input.name]}
-          />
-        ))}
+    <form>
+      {initialFormFields.map((input, index) => (
+        <Input
+          value={values[input.name]}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          placeholder={input.label}
+          key={index}
+          id={input.name}
+          name={input.name}
+          error={errors[input.name]}
+          touched={touched[input.name]}
+        />
+      ))}
+      <div className="flex flex-col">
         <span
           className={`text-red-500 ${hasError ? "opacity-100" : "opacity-0"}`}
         >
           All fields are required.
         </span>
         <Button onClick={handleSubmit}>Submit</Button>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 };

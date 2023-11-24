@@ -1,7 +1,9 @@
-'use client'
+"use client";
 import { useContext } from "react";
 import { AppContext } from "@/app/contexts/AppContext";
 import { Form } from "@/app/steps/Form/Form";
+import { Date } from "@/app/steps/Date/Date";
+import { Container } from "../Container/Container";
 
 export const Main = () => {
   const appContext = useContext(AppContext);
@@ -13,16 +15,20 @@ export const Main = () => {
     switch (step) {
       case "form":
         return <Form />;
-    //   case "player name":
-    //     return <SelectName />;
-    //   case "select unit":
-    //     return <SelectUnit />;
-    //   case "result":
-    //     return <Battleground />;
+      case "date":
+        return <Date />;
+      //   case "select unit":
+      //     return <SelectUnit />;
+      //   case "result":
+      //     return <Battleground />;
       default:
         return;
     }
   };
 
-  return <main className="w-full max-w-3xl my-10 px-5 m-auto">{getContent()}</main>;
+  return (
+    <main className="w-full max-w-3xl my-10 px-5 m-auto">
+      <Container>{getContent()}</Container>
+    </main>
+  );
 };
