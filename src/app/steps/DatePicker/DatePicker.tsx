@@ -3,6 +3,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useState, useEffect, useContext } from "react";
 import { AppContext } from "@/app/contexts/AppContext";
+import { SelectPlan } from "./SelectPlan";
 import { Button } from "@/app/components/UI/Button/Button";
 
 type ValuePiece = Date | null;
@@ -22,7 +23,6 @@ export const DatePicker = () => {
   const [isReady, setIsReady] = useState(false);
 
   const appContext = useContext(AppContext);
-
   if (!appContext) return null;
   const { setStep, setCustomerData } = appContext;
 
@@ -96,16 +96,7 @@ export const DatePicker = () => {
         selectRange
         maxDate={maxSelectableDate}
       />
-      <div className="w-full bg-secondary text-primary text-2xl p-4">
-        <select
-          className="w-full bg-transparent"
-          value={selectedPlan}
-          onChange={handleSelectChange}
-        >
-          <option value="standard">Standard - 30$ per day</option>
-          <option value="premium">Premium - 50$ per day</option>
-        </select>
-      </div>
+      <SelectPlan value={selectedPlan} onChange={handleSelectChange} />
       <div className="uppercase flex flex-col w-full gap-8 text-2xl">
         <div className="flex flex-col md:flex-row gap-2 items-center md:w-full">
           <SummaryCard>Number of days:</SummaryCard>
