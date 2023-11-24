@@ -25,7 +25,7 @@ export const Input:React.FC<InputProps> = ({ name, type, value, placeholder, id,
           placeholder={placeholder}
           required
         />
-        <span className={`text-red-500 ${error && touched ? 'opacity-100' : 'opacity-0'} duration-[0.34s] ease-[ease]`}>Please provide correct {id}</span>
+        <span className={`text-red-500 ${error && touched ? 'opacity-100' : 'opacity-0'} duration-[0.34s] ease-[ease]`}>{error}</span>
       </div>
     );
   };
