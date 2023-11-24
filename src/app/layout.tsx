@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { Header } from "./components/layout/Header/Header";
+import { Main } from "./components/layout/Main/Main";
 import { Footer } from "./components/layout/Footer/Footer";
 import AppContextProvider from "./contexts/AppContext";
 
@@ -22,7 +23,7 @@ export default function RootLayout({
       <body className={poppins.className}>
         <AppContextProvider>
           <Header />
-          {children}
+        <Main>{children}</Main>
           <Footer />
         </AppContextProvider>
       </body>
