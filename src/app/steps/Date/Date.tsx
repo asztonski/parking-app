@@ -15,6 +15,7 @@ type SummaryCardProps = {
 
 export const DatePicker = () => {
   const [value, setValue] = useState<Value>(new Date());
+  const [selectedDays, setSelectedDays] = useState([]);
   const [numberOfDays, setNumberOfDays] = useState<number>(0);
   const [selectedPlan, setSelectedPlan] = useState("standard");
   const [totalPrice, setTotalPrice] = useState(0);
@@ -38,6 +39,11 @@ export const DatePicker = () => {
   useEffect(() => {
     if (Array.isArray(value)) {
       const [startDate, endDate] = value;
+      setSelectedDays((prevSelectedDays) => ({
+        ...prevSelectedDays,
+        firstDay: startDate,
+        lastDay: endDate
+      }))
       const days = calculateNumberOfDays(startDate, endDate);
       setNumberOfDays(days);
     }
@@ -62,6 +68,7 @@ export const DatePicker = () => {
       ...prevCustomerData,
       plan: selectedPlan,
       totalPrice: totalPrice,
+      selectedDays: selectedDays,
     }));
     setStep('checkout')
   };

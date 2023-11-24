@@ -1,9 +1,11 @@
 "use client";
 import { useContext } from "react";
 import { AppContext } from "@/app/contexts/AppContext";
+import { Container } from "../Container/Container";
 import { Form } from "@/app/steps/Form/Form";
 import { DatePicker } from "@/app/steps/Date/Date";
-import { Container } from "../Container/Container";
+import { Checkout } from "@/app/steps/Checkout/Checkout";
+
 
 export const Main = () => {
   const appContext = useContext(AppContext);
@@ -17,10 +19,8 @@ export const Main = () => {
         return <Form />;
       case "date":
         return <DatePicker />;
-      //   case "select unit":
-      //     return <SelectUnit />;
-      //   case "result":
-      //     return <Battleground />;
+      case "checkout":
+        return <Checkout />;
       default:
         return;
     }
