@@ -44,20 +44,20 @@ export const DatePicker = () => {
         maxDate={maxSelectableDate}
       />
       <div className="uppercase flex flex-col w-full gap-8 text-2xl">
-        <div className="flex gap-2 w-full">
-          <span className="w-1/2 text-center bg-primary text-secondary p-4">
+        <div className="flex flex-col md:flex-row gap-2 items-center md:w-full">
+          <span className="w-1/2 min-w-[250px] text-center bg-primary text-secondary p-4">
             Number of days:
           </span>
-          <span className="w-1/2 text-center bg-primary text-secondary p-4">
+          <span className="w-1/2 min-w-[250px] text-center bg-primary text-secondary p-4">
             {numberOfDays}
           </span>
         </div>
 
-        <div className="flex gap-2 w-full">
-          <span className="w-1/2 text-center bg-primary text-secondary p-4">
+        <div className="flex flex-col md:flex-row gap-2 items-center md:w-full">
+          <span className="w-1/2 min-w-[250px] text-center bg-primary text-secondary p-4">
             You will pay:
           </span>
-          <span className="w-1/2 text-center bg-primary text-secondary p-4">
+          <span className="w-1/2 min-w-[250px] text-center bg-primary text-secondary p-4">
             {numberOfDays * 40}$
           </span>
         </div>
