@@ -1,7 +1,6 @@
 "use client";
 import { useContext } from "react";
 import { AppContext } from "@/app/contexts/AppContext";
-import { Button } from "@/app/components/UI/Button/Button";
 
 export const CheckoutCard = () => {
   const appContext = useContext(AppContext);
@@ -44,7 +43,6 @@ export const CheckoutCard = () => {
         </span>
         <span>Total price: {customerData.totalPrice}$</span>
       </div>
-      <Button>Print the ticket</Button>
     </div>
   );
 };
