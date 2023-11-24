@@ -14,9 +14,7 @@ const AppContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [step, setStep] = useState<string>("form");
-  const [customerData, setCustomerData] = useState<object[]>([
-    { firstName: '', lastName: '', phoneNumber: null, model: '', plates: '' },
-  ]);
+  const [customerData, setCustomerData] = useState<object[]>([]);
 
   return (
     <AppContext.Provider
