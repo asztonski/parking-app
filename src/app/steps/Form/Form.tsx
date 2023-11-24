@@ -66,11 +66,6 @@ export const Form = () => {
         />
       ))}
       <div className="flex flex-col">
-        <span
-          className={`text-red-500 ${hasError ? "opacity-100" : "opacity-0"}`}
-        >
-          All fields are required.
-        </span>
         <Button onClick={handleSubmit}>Submit</Button>
       </div>
     </form>

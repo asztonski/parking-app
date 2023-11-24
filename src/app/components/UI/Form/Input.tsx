@@ -12,7 +12,7 @@ type InputProps = {
 
 export const Input:React.FC<InputProps> = ({ name, type, value, placeholder, id, error, touched, onChange, onBlur }) => {
     return (
-      <div className="w-full flex flex-col gap-6 uppercase">
+      <div className="w-full flex flex-col gap-2 uppercase my-8">
         <input
           type={type}
           id={id}
