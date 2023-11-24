@@ -8,14 +8,15 @@ import { Button } from "@/app/components/UI/Button/Button";
 import { formSchema } from "@/app/helpers/formSchema";
 
 export const Form = () => {
-  const { setStep, setCustomerData } = useContext(AppContext);
+  const appContext = useContext(AppContext);
+  if (!appContext) return null;
+  const { setStep, setCustomerData } = appContext;
 
   const onSubmit = (values, actions) => {
     if (hasError) {
       return;
     }
 
-    // Create a new customer object
     const newCustomer = {
       firstName: values.firstName,
       lastName: values.lastName,
@@ -26,7 +27,6 @@ export const Form = () => {
     };
 
     setCustomerData(newCustomer);
-
     setStep("date");
   };
 

@@ -20,7 +20,11 @@ export const DatePicker = () => {
   const [selectedPlan, setSelectedPlan] = useState("standard");
   const [totalPrice, setTotalPrice] = useState(0);
   const [isReady, setIsReady] = useState(false);
-  const { setStep, setCustomerData } = useContext(AppContext);
+
+  const appContext = useContext(AppContext);
+
+  if (!appContext) return null;
+  const { setStep, setCustomerData } = appContext;
 
   const maxiumumDays = 30;
   const priceMultipler = selectedPlan === "standard" ? 30 : 50;

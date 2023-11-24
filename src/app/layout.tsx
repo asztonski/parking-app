@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={poppins.className}>
         <AppContextProvider>
           <Header />
-        <Main>{children}</Main>
+          <Main>{children}</Main>
           <Footer />
         </AppContextProvider>
       </body>

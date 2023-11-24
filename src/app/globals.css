@@ -43,6 +43,9 @@
     @apply flex-1;
   }
 
+
+  /* CALENDAR CUSTOM STYLES */
+
   .react-calendar {
     @apply !bg-transparent !w-full !border-none;
     & .react-calendar__navigation button:disabled {
